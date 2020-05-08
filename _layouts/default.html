@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <META NAME="author" CONTENT="Mike Liu, https://github.com/mikeliucc, automike, Nexiality">
+    <META NAME="Classification" CONTENT="Nexial - test automation platform with the main motivation to provide a set of capabilities to automate software testing. Main capabilities: Test automation for everyone - no coding experience required (but supported), simple and valuable to all project participants; Keyword-driven via simple/familiar spreadsheet interface; Hybrid approach to support keyword-based tests and program/script -based tests; Local and remote (Jenkins, BrowserStack) support; Integration to existing collaboration tools such as JIRA and Confluence; Supports various application architecture, includes web (browser), desktop, API/REST/SOAP, database, batch, ssh; Extensive and flexible test management; Data management and data generation; Supports FRIP (functional, regression, integration, performance testing)">
+    <meta name="Description" content="The test automation platform for everyone! A hybrid, codeless approach towards test automation that supports both agile and traditional product development methodologies and promotes collaboration across the entire team. Collaborate, Integrate, Automate! ">
+    <META NAME="distribution" CONTENT="Global">
+    <meta name="Keywords" content="automation nexial nexiality nexialist test collaborate integrate automate platform codeless hybrid testing scripting regression functional QA quality engineering">
+    <META NAME="Language" CONTENT="English">
+    <meta name="revisit-after" content="5 days">
+    <meta name="robots" content="index, follow">
+    <META NAME="subject" CONTENT="test automation platform">
+
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" type="text/css" href="{{ '/assets/css/print.css' | relative_url }}" media="print">
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    {% seo %}
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+
+    {% if site.tipue_search_active %}
+    <link rel="stylesheet" href="{{ "/assets/tipuesearch/css/normalize.css" | relative_url }}">
+    <link rel="stylesheet" href='{{ "/assets/tipuesearch/css/tipuesearch.css" | relative_url }}'>
+    <script src="{{ "/assets/tipuesearch/tipuesearch_content.js" | relative_url }}"></script>
+    <script src='{{ "/assets/tipuesearch/tipuesearch_set.js" | relative_url }}'></script>
+    <script src='{{ "/assets/tipuesearch/tipuesearch.min.js" | relative_url }}'></script>
+    {% endif %}
+
+    {% if site.google_analytics %}
+    {% include analytics.html %}
+    {% endif %}
+
+    <script src='{{ "/assets/navigation.js" | relative_url }}'></script>
+</head>
+
+<body onload="adjustPosition()">
+<div id="container">
+    <header>
+        <!--<h1>Nexial Automation &raquo; {{ page.title | default: site.title | default: site.github.repository_name }}</h1>-->
+        <h1>Nexial Automation</h1>
+        <h2>{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
+
+        <select class="quick_links_dropdown" id="quick_links_dropdown" onchange="document.location=this.selectedOptions[0].value;">
+            <option value="{{'/'              | prepend:site.baseurl }}">Home</option>
+            <option value="{{'/userguide'     | prepend:site.baseurl }}" {% if page.url contains '/userguide/' %}selected="true"{% endif %}>User Guide</option>
+            <option value="{{'/commands'      | prepend:site.baseurl }}" {% if page.url contains '/commands/' %}selected="true"{% endif %}>Command Reference</option>
+            <option value="{{'/systemvars'    | prepend:site.baseurl }}" {% if page.url contains '/systemvars/' %}selected="true"{% endif %}>System Variables</option>
+            <option value="{{'/flowcontrols'  | prepend:site.baseurl }}" {% if page.url contains '/flowcontrols/' %}selected="true"{% endif %}>Flow Controls</option>
+            <option value="{{'/functions'     | prepend:site.baseurl }}" {% if page.url contains '/functions/' %}selected="true"{% endif %}>Built-in Functions</option>
+            <option value="{{'/expressions'   | prepend:site.baseurl }}" {% if page.url contains '/expressions/' %}selected="true"{% endif %}>Expressions</option>
+            <option value="{{'/jsonpath'      | prepend:site.baseurl }}" {% if page.url contains '/jsonpath/' %}selected="true"{% endif %}>Jsonpath</option>
+            <option value="{{'/interactive'   | prepend:site.baseurl }}" {% if page.url contains '/interactive/' %}selected="true"{% endif %}>Nexial Interactive</option>
+            <option value="{{'/tipsandtricks' | prepend:site.baseurl }}" {% if page.url contains '/tipsandtricks/' %}selected="true"{% endif %}>Tips and Tricks</option>
+            <option value="{{'/release'       | prepend:site.baseurl }}" {% if page.url contains '/release/' %}selected="true"{% endif %}>Release Notes</option>
+        </select>
+
+        {% if page.level and page.level == 1 %}
+        {% include _breadcrumb_level1.html %}
+        {% else %}
+        {% if page.url contains '/commands/' %}
+        {% if page.parent %}
+        {% include _breadcrumb_command.html %}
+        {% else %}
+        {% include _breadcrumb_command_type.html %}
+        {% endif %}
+        {% else %}
+        {% if page.parent %}
+        {% if page.level > 2 %}
+        {% include _breadcrumb_level3.html %}
+        {% else %}
+        {% include _breadcrumb_level2.html %}
+        {% endif %}
+        {% else %}
+        {% include _breadcrumb_level1.html %}
+        {% endif %}
+        {% endif %}
+        {% endif %}
+
+        {% if site.tipue_search_active %}
+        {% include search.html %}
+        {% endif %}
+    </header>
+
+    <div class="inner">
+        <section id="downloads" class="clearfix">
+            {% if site.show_downloads %}
+            <a href="{{ site.github.zip_url }}" id="download-zip" class="button"><span>Download .zip</span></a>
+            <a href="{{ site.github.tar_url }}" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+            {% endif %}
+
+            {% if site.github.public %}
+            {% if site.github.is_project_page %}
+            <a href="{{ site.github.repository_url }}" id="view-on-github" class="button"><span>View on GitHub</span></a>
+            {% else %}
+            <a href="{{ site.github.owner_url }}" id="view-on-github" class="button"><span>View on GitHub</span></a>
+            {% endif %}
+            {% endif %}
+        </section>
+
+        <section id="main_content">
+            <h3 class="pageTitle">
+            {% if page.url contains '/commands/' and page.parent %}
+            {{ page.parent }} &raquo; {{ page.title }}
+            {% else %}
+            {{ page.title }}
+            {% endif %}
+            </h3>
+
+            {{ content }}
+        </section>
+
+        <br/>
+
+        <hr/>
+
+        <div class="quick_links">
+            <a class="quick_link" href="{{ '/userguide' | prepend:site.baseurl }}">User Guide</a>
+            <a class="quick_link" href="{{ '/commands' | prepend:site.baseurl }}">Command Reference</a>
+            <a class="quick_link" href="{{ '/systemvars' | prepend:site.baseurl }}">System Variables</a>
+            <a class="quick_link" href="{{ '/flowcontrols' | prepend:site.baseurl }}">Flow Controls</a>
+            <a class="quick_link" href="{{ '/functions' | prepend:site.baseurl }}">Built-in Functions</a>
+            <a class="quick_link" href="{{ '/expressions' | prepend:site.baseurl }}">Expressions</a>
+            <a class="quick_link" href="{{ '/jsonpath' | prepend:site.baseurl }}">Jsonpath</a>
+            <a class="quick_link" href="{{ '/interactive' | prepend:site.baseurl }}">Nexial Interactive</a>
+            <a class="quick_link" href="{{ '/tipsandtricks' | prepend:site.baseurl }}">Tips and Tricks</a>
+            <a class="quick_link" href="{{ '/release' | prepend:site.baseurl }}">Release Notes</a>
+        </div>
+
+        <hr/>
+
+        <br/>
+
+        {% if page.comments %}
+        {% include disqus.html %}
+        {% endif %}
+
+        <footer>
+            {% if site.github.is_project_page %}
+            {{ site.title | default: site.github.repository_name }} is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a><br/>
+            {% endif %}
+        </footer>
+
+    </div>
+</div>
+
+{% if site.google_analytics %}
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '{{ site.google_analytics }}', 'auto');
+    ga('send', 'pageview');
+</script>
+{% endif %}
+
+</body>
+</html>

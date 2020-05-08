@@ -1,0 +1,435 @@
+/*
+rgba(106, 142, 46, 1)
+rgba(218, 230, 164, 1)
+*/
+
+body {
+    padding: 25px 20px;
+}
+
+a {
+    font-weight:     bold;
+    text-decoration: none;
+    padding:         5px;
+    border-radius:   5px;
+    color:           rgba(106, 142, 46, 1);
+    background:      rgba(150, 165, 100, 0.25);
+}
+
+a > i {
+    margin: 0 2px;
+}
+
+a:visited {
+    color: rgba(106, 142, 46, 1);
+}
+
+a:hover {
+    color:            rgba(230, 255, 200, 1) !important;
+    background-color: rgba(40, 60, 30, 0.75);
+}
+
+.title {
+    border-top-left-radius:  15px;
+    border-top-right-radius: 15px;
+    border:                  none;
+    color:                   rgb(40, 78, 28);
+    box-shadow:              0 -15px 15px -7px rgba(30, 75, 50, 0.75);
+    background-image:        linear-gradient(180deg, rgba(106, 142, 46, 0.65) 5px, rgba(106, 142, 46, 0.75) 28px, rgba(102, 138, 42, 0.75) 30px, rgba(106, 142, 46, 0.5) 45px, rgba(255, 255, 255, 0.75) 60px);
+    background-color:        rgba(255, 255, 255, 0.95);
+    text-shadow:             1px 1px 5px rgba(255, 255, 255, 0.5);
+    padding:                 0;
+}
+
+.title > div {
+    background-image:      url(https://nexiality.github.io/documentation/image/logo-small.png);
+    background-repeat:     no-repeat;
+    background-position:   right;
+    background-origin:     content-box;
+    background-size:       50px;
+    background-position-y: -5px;
+    background-position-x: right;
+    height:                45px;
+    padding:               16px 12px 0 14px;
+}
+
+.tooltip {
+    padding:     5px;
+    line-height: 1.5em;
+}
+
+.footer {
+    border-bottom-left-radius:  15px;
+    border-bottom-right-radius: 15px;
+    border:                     none;
+    padding:                    8px !important;
+    text-shadow:                1px 1px 0 rgba(255, 255, 255, 0.95);
+    box-shadow:                 0 -15px 15px -12px rgba(0, 40, 40, 0.5) inset;
+    background-color:           transparent;
+    background-image:           linear-gradient(-180deg, rgba(255, 255, 255, 0.1), rgba(218, 230, 164, 0.75));
+    color:                      rgba(106, 142, 46, 1) !important;
+}
+
+.footer a {
+    background-color: transparent;
+    text-shadow:      1px 1px 1px rgba(255, 255, 255, 1) !important;
+    padding:          3px 3px 0 6px;
+    border:           2px ridge rgba(106, 142, 46, 0.25);
+    border-left:      none;
+    border-right:     none;
+}
+
+.footer a:hover {
+    color:            rgba(255, 255, 255, 1) !important;
+    background-color: rgba(106, 142, 46, 0.75);
+    text-shadow:      1px 1px 1px rgba(0, 0, 0, 0.25) !important;
+}
+
+.result-controls i.off {
+    color:         rgba(100, 100, 100, 0.5);
+    border-bottom: 2px solid rgba(100, 100, 100, 0.5);
+}
+
+.result-controls i.on {
+    color:         rgba(80, 120, 100, 1);
+    border-bottom: 2px solid rgba(100, 140, 120, 1);
+}
+
+/*.result-controls i.fa-expand {*/
+/*    color:         rgba(70, 70, 70, 1);*/
+/*    border-bottom: 2px solid rgba(70, 70, 70, 1);*/
+/*}*/
+
+/*.result-controls i.fa-compress {*/
+/*    color:         rgba(100, 100, 100, 0.5);*/
+/*    border-bottom: 2px solid rgba(100, 100, 100, 0.5);*/
+/*}*/
+
+/*.result-controls i.fa-expand {*/
+/*}*/
+
+.category {
+    font-size:        12pt;
+    font-family:      Tahoma, serif;
+    font-weight:      normal;
+    vertical-align:   middle;
+    clear:            both;
+    padding:          4px 10px 5px 15px;
+    margin-top:       25px;
+    border:           none;
+    border-radius:    5px 15px 15px 5px;
+    box-shadow:       0 2px 7px rgba(80, 90, 70, 0.75);
+    text-shadow:      1px 1px 1px rgba(250, 250, 250, 0.75);
+    color:            rgba(101, 137, 41, 1);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(218, 224, 159, 1));
+}
+
+.category .showhide { top: -0.25em; }
+
+.metrics-container {
+    margin:                  -8px 8px 0 2px;
+    border:                  1px solid rgba(50, 50, 50, 0.15);
+    border-top:              none;
+    border-top-left-radius:  0;
+    border-top-right-radius: 0;
+    background-color:        rgba(255, 255, 255, 0.1);
+}
+
+/* toolbar */
+.metrics-container .container-toolbar {
+    font-size:        9pt;
+    line-height:      1.5em;
+    display:          inline-block;
+    padding:          0 2px 0 10px;
+    margin:           -37px 32px 0 0;
+    border-radius:    10px 2px 2px 10px;
+    border:           1px inset rgba(150, 200, 180, 0.85);
+    background-image: linear-gradient(-180deg, rgba(30, 40, 15, 0.5) 2%, transparent 8%);
+    background-color: rgba(180, 200, 160, 0.75);
+    box-shadow:       1px 1px 1px rgba(240, 255, 250, 0.85);
+}
+
+.metrics-container .container-toolbar i {
+    border:         none;
+    margin-right:   4px;
+    padding:        0 2px;
+    vertical-align: middle;
+}
+
+.metrics-container .container-toolbar i.on {
+    color: rgba(40, 50, 0, 0.75);
+}
+
+.metrics-container .container-toolbar i.off {
+    color: rgba(100, 100, 100, 0.5);
+}
+
+.metrics-container .container-toolbar i:hover {
+    box-shadow:       none;
+    background-color: transparent;
+}
+
+/* dataTable-specifics */
+.metrics-container .dataTables_filter {
+    float:      left;
+    text-align: left;
+    clear:      none;
+    padding:    5px 0 0 0;
+    margin:     0 10px 0 0;
+}
+
+.metrics-container .dataTables_info {
+    text-align: center;
+    clear:      none !important;
+    padding:    7px 0 0 0;
+    margin:     0 15px;
+}
+
+.metrics-container .dataTables_length {
+    clear:   none;
+    padding: 6px 0 0 0;
+    margin:  0 15px;
+}
+
+.metrics-container .dataTables_paginate {
+    float:   right;
+    padding: 2px 0 0 0;
+    margin:  2px 0 0 0;
+}
+
+.metrics-container .dataTables_paginate a {
+    font-weight: normal;
+}
+
+.metrics-container .dataTables_paginate a.paginate_button {
+    padding:       2px 5px;
+    background:    linear-gradient(to bottom, #fff 0%, rgba(200, 200, 200, 0.75) 100%);
+    border-radius: 10px;
+    border:        1px solid #979797;
+}
+
+.metrics-container .dataTables_paginate a.paginate_button.disabled {
+    background: none;
+    border:     none;
+}
+
+.metrics-container .metrics thead .sorting {
+    background-blend-mode: exclusion;
+}
+
+.metrics {
+    padding-top:     5px;
+    width:           100% !important;
+    box-shadow:      0 10px 10px -5px rgba(40, 40, 40, 0.45);
+    /*table-layout:    fixed;*/
+    /*word-wrap:       break-word;*/
+    /*border-collapse: collapse;*/
+    border-radius:   15px;
+}
+
+.metrics th.type-activity, .metrics th.type-test {
+    vertical-align: bottom !important;
+}
+
+.metrics th.type-row {
+    width:     35px !important;
+}
+
+.metrics td.type-command {
+    line-height: 25px;
+}
+
+.metrics td.type-parameters {
+    font-family: monospace;
+    font-size:   9pt;
+    color:       #555;
+}
+
+.metrics th.type-time, .metrics th.type-render, .metrics th.type-transfer {
+    width: 70px;
+}
+
+.metrics th.sorting, .metrics th.sorting_asc, .metrics th.sorting_desc {
+    background-position: top right !important;
+}
+
+.metrics th.label {
+    text-align:     center;
+    vertical-align: bottom;
+    padding:        0 0 5px 0;
+    position:       relative;
+    background:     rgba(200, 200, 200, 0.5);
+    border-left:    1px solid rgba(80, 80, 80, 0.15);
+    height:         45px;
+}
+
+.metrics th.chart-no-select {
+    background: #fff !important;
+}
+
+.metrics th.chart-select-all {
+    padding:    0;
+    text-align: right;
+}
+
+.metrics th.chart-select-all i.chart-select-all {
+    font-size:  8pt;
+    padding:    5px 15px 5px;
+    color:      #eee;
+    background: radial-gradient(circle, rgba(75, 75, 75, 0.75) 5px, transparent 12px);
+    cursor:     pointer;
+}
+
+.metrics th.chart-select-all i.chart-select-all:hover {
+    color:      #008;
+    background: radial-gradient(circle, rgba(160, 180, 200, 0.75) 5px, transparent 12px);
+}
+
+.metrics th.chart-select {
+    text-align: center;
+    padding:    0;
+    color:      #555;
+    background: linear-gradient(0deg, rgba(100, 100, 100, 0.25), transparent);
+    border:     1px outset rgba(80, 80, 80, 0.15);
+    cursor:     pointer;
+}
+
+.metrics th.chart-select:hover {
+    color:       #000;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.75);
+    background:  linear-gradient(180deg, rgba(100, 100, 100, 0.5) -2px, transparent 10px, rgba(100, 100, 100, 0.5) 20px);
+}
+
+.metrics th.chart-select[data-selected=true] {
+    color:       #333;
+    text-shadow: 0 0 10px rgba(205, 205, 205, 0.75);
+    font-size:   120%;
+    border:      1px inset;
+}
+
+.metrics th.type-activity:hover:before, .metrics th.type-activity:hover:after,
+.metrics th.type-test:hover:before, .metrics th.type-test:hover:after {
+    background: none;
+    content:    none !important;
+}
+
+.metrics th.label:hover:before {
+    top:          44px;
+    left:         27px;
+    border:       solid;
+    border-color: #333 transparent;
+    border-width: 0 6px 6px 6px;
+    content:      "";
+    position:     absolute;
+    z-index:      99;
+}
+
+.metrics th.label:hover:after {
+    top:           52px;
+    left:          -63px;
+    background:    rgba(50, 50, 50, .85);
+    color:         #fff;
+    font-size:     11px;
+    font-weight:   normal;
+    text-align:    left;
+    text-shadow:   1px 1px 1px #000;
+    content:       attr(tooltip);
+    white-space:   pre-wrap;
+    border-radius: 10px;
+    padding:       5px 10px;
+    width:         172px;
+    position:      absolute;
+    line-height:   1.35em;
+    z-index:       98;
+}
+
+.metrics > tbody > tr > td {
+    padding:        5px;
+    border-left:    1px solid rgba(80, 80, 80, 0.15);
+    vertical-align: middle !important;
+}
+
+.metrics > tbody > tr > td.type-test {
+    overflow-wrap: break-word;
+}
+
+.metrics > tbody > tr > td.type-row {
+    text-align: right;
+}
+
+.metrics > tbody > tr > td.type-time, .metrics > tbody > tr > td.type-render, .metrics > tbody > tr > td.type-transfer {
+    text-align:  right;
+    font-family: monospace;
+}
+
+.metrics > tbody > tr > td {
+    vertical-align: top;
+}
+
+.control {
+    cursor:        pointer;
+    padding:       5px 3px 2px 3px;
+    border-radius: 5px;
+    border-bottom: 2px solid rgba(100, 140, 120, 1);
+    color:         rgba(80, 120, 100, 1);
+    text-shadow:   0 0 2px rgba(245, 245, 245, 0.75);
+}
+
+.control:hover {
+    border-bottom: 2px solid rgba(40, 100, 60, 1);
+    color:         rgba(40, 100, 60, 1);
+    text-shadow:   0 0 5px rgba(40, 100, 80, 0.75);
+}
+
+.control span {
+    font-family: Thonburi, sans-serif;
+    margin-left: 5px;
+}
+
+.control.disabled {
+    cursor:       no-drop;
+    text-shadow:  none;
+    color:        rgba(150, 150, 150, 0.85);
+    border-color: rgba(150, 150, 150, 0.85);
+}
+
+.control.disabled:hover {
+    color:       rgba(150, 150, 150, 0.85);
+    text-shadow: none;
+}
+
+/* utilities */
+.please-wait {
+    text-align: center;
+    font-size:  150%;
+    color:      rgba(150, 150, 150, 0.75);
+    top:        50%;
+    position:   fixed;
+    width:      100%;
+}
+
+/* chart */
+#chart_popup {
+    border:        3px solid #888;
+    border-radius: 15px;
+    box-shadow:    0 0 15px #000;
+    width:         800px;
+    height:        650px;
+    overflow:      hidden;
+    z-index:       999;
+    background:    rgba(255, 255, 255, 0.95);
+    text-align:    center;
+    padding:       15px;
+}
+
+canvas {
+    -moz-user-select:    none;
+    -webkit-user-select: none;
+    -ms-user-select:     none;
+}
+
+.metrics_chart {
+    animation:  chartjs-render-animation 500ms;
+    margin:     0 auto;
+    background: #fff !important;
+}
